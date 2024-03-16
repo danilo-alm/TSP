@@ -1,15 +1,15 @@
-import networkx as nx
 
-def dijkstra_tsp(graph, start):
+def dijkstra_tsp(matrix, start):
+    num_cities = len(matrix)
     visited = set([start])
     path = [start]
     current = start
-    while len(visited) < len(graph.nodes):
+    while len(visited) < num_cities:
         nearest_neighbor = None
         nearest_distance = float('inf')
-        for neighbor in graph.neighbors(current):
+        for neighbor in range(num_cities):
             if neighbor not in visited:
-                distance = nx.dijkstra_path_length(graph, current, neighbor, weight='weight')
+                distance = matrix[current][neighbor]
                 if distance < nearest_distance:
                     nearest_neighbor = neighbor
                     nearest_distance = distance
@@ -23,22 +23,18 @@ def dijkstra_tsp(graph, start):
     return path
 
 # Exemplo de uso
-G = nx.Graph()
-""" G.add_weighted_edges_from([(0, 8, 39), (8, 0, 45), (39, 45, 0)])
- """
-
 distances = [
-    [0, 1, 2, 3],
-    [1, 0, 4, 5],
-    [2, 4, 0, 6],
-    [3, 5, 6, 0]
+    [0, 10, 15, 20],
+    [10, 0, 35, 25],
+    [15, 35, 0, 30],
+    [20, 25, 30, 0]
 ]
+#start_city = 0
 
-""" G.add_weighted_edges_from(distances) """
+num_cities = len(distances)
+for start_node in range(num_cities):
+    tour = dijkstra_tsp(distances, start_node)
+    print("Caminho aproximado do PCV:", tour)
 
-start_node = 0
-
-tour = dijkstra_tsp(distances, start_node)
-print("Caminho aproximado do PCV:", tour)
-
-
+""" tour = dijkstra_tsp(distances, start_city)
+print("Caminho aproximado do PCV:", tour) """
