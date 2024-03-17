@@ -32,9 +32,18 @@ distances = [
 #start_city = 0
 
 num_cities = len(distances)
-for start_node in range(num_cities):
-    tour = dijkstra_tsp(distances, start_node)
-    print("Caminho aproximado do PCV:", tour)
 
-""" tour = dijkstra_tsp(distances, start_city)
-print("Caminho aproximado do PCV:", tour) """
+countFinal=100000
+tourFinal = []
+
+for start_node in range(num_cities):
+    countAux=0
+    tour = dijkstra_tsp(distances, start_node)
+    for i in range(len(tour)-1):
+        countAux+=distances[tour[i]][tour[i+1]]
+    if countAux<countFinal:
+        countFinal=countAux
+        tourFinal=tour
+
+print("Caminho aproximado do PCV:", tourFinal)
+
