@@ -57,6 +57,7 @@ class SolucionadorTSP:
 
         return melhor_tour, melhor_distancia
 
+    # AGM de Kruskal
     def agm_kruskal(self):
         num_cidades = len(self.coordenadas)
         arestas = []
@@ -81,6 +82,35 @@ class SolucionadorTSP:
                 arestas_agm.append(aresta_grafo)
 
         return arestas_agm
+
+    # AGM de Prim
+    def agm_prim(self):
+        num_cidades = len(self.coordenadas)
+        arvore_geradora = []
+
+        # Define o vértice inicial aleatório
+        visitados = [False] * num_cidades
+        visitados[0] = True
+
+        while len(arvore_geradora) < num_cidades - 1:
+            menor_distancia = float('inf')
+            aresta_mais_curta = None
+
+            for i in range(num_cidades):
+                if visitados[i]:
+                    for j in range(num_cidades):
+                        if not visitados[j]:
+                            distancia = self.matriz_distancias[i][j]
+                            if distancia < menor_distancia:
+                                menor_distancia = distancia
+                                aresta_mais_curta = (i, j, distancia)
+
+            if aresta_mais_curta:
+                u, v, peso = aresta_mais_curta
+                arvore_geradora.append(aresta_mais_curta)
+                visitados[v] = True
+
+        return arvore_geradora
 
     @classmethod
     def ler_coordenadas(cls, arquivo):
@@ -134,7 +164,6 @@ class SolucionadorTSP:
         return matriz_distancias
 
 
-# Exemplo de uso:
 if __name__ == "__main__":
     coordenadas_att48 = SolucionadorTSP.ler_coordenadas("../data/ATT48/att48.tsp")
     coordenadas_gr17 = SolucionadorTSP.ler_coordenadas("../data/GR17/gr17.tsp")
@@ -156,4 +185,16 @@ if __name__ == "__main__":
     print("\nArestas da Árvore Geradora Mínima para gr17:")
     agm_arestas_gr17 = solucionador_gr17.agm_kruskal()
     for aresta in agm_arestas_gr17:
+        print(aresta)
+
+    # Imprimir as arestas da Árvore Geradora Mínima para o att48 usando Prim
+    print("\nArestas da Árvore Geradora Mínima para att48 usando Prim:")
+    agm_arestas_att48_prim = solucionador_att48.agm_prim()
+    for aresta in agm_arestas_att48_prim:
+        print(aresta)
+
+    # Imprimir as arestas da Árvore Geradora Mínima para o gr17 usando Prim
+    print("\nArestas da Árvore Geradora Mínima para gr17 usando Prim:")
+    agm_arestas_gr17_prim = solucionador_gr17.agm_prim()
+    for aresta in agm_arestas_gr17_prim:
         print(aresta)
