@@ -1,60 +1,41 @@
-# Projeto: Problema do Caixeiro Viajante (PCV) 
+# Algoritmo de Christofides para o Problema do Caixeiro Viajante (PCV)
 
-Bem-vindo ao projeto do Problema do Caixeiro Viajante (PCV)! Este é um problema clássico de otimização combinatória no qual o objetivo é encontrar o caminho mais curto que visita todas as cidades uma vez e retorna à cidade de origem.
+## Introdução
 
+O Problema do Caixeiro Viajante (PCV) é um problema clássico de otimização em ciência da computação e matemática. Dado um conjunto de cidades e as distâncias entre elas, o objetivo é encontrar a rota mais curta possível que visite cada cidade exatamente uma vez e retorne à cidade de origem. O PCV é conhecido por ser um problema NP-difícil, o que significa que não há um algoritmo conhecido de tempo polinomial que possa resolvê-lo de forma ótima para todas as instâncias.
 
-## Software necessário
+O algoritmo de Christofides é um algoritmo aproximado projetado para encontrar uma solução para o PCV que está garantida de estar dentro de um fator de 1,5 do comprimento da solução ótima. Foi proposto por Nicos Christofides em 1976 e é baseado em vários passos-chave, incluindo a construção de uma árvore geradora mínima, a identificação de vértices de grau ímpar, o cálculo de um emparelhamento perfeito de peso mínimo e a construção de um circuito hamiltoniano.
 
-O projeto foi testado usando Python 3.11.6.
+## Espaço Métrico
 
+Antes de entrar nos detalhes do algoritmo, é importante observar que o algoritmo de Christofides é projetado para espaços métricos. Um espaço métrico é uma construção matemática onde a função de distância entre quaisquer dois pontos (cidades, neste caso) satisfaz as seguintes propriedades:
 
-## Instalação
+1. **Positividade**: A distância entre quaisquer dois pontos é sempre não negativa.
+2. **Simetria**: A distância do ponto A ao ponto B é a mesma que a distância do ponto B ao ponto A.
+3. **Reflexividade**: A distância de um ponto a ele mesmo é sempre zero.
+4. **Desigualdade Triangular**: A soma das distâncias de dois lados de um triângulo é maior ou igual à distância do terceiro lado.
 
-[Jupyter Notebook](https://pypi.org/project/notebook/) é necessário para executar `main.ipynb`:
-```
-pip install notebook
-```
-Caso queira utilizar seu próprio script, nenhuma dependência externa é necessária.
+## Passos do Algoritmo
 
+O algoritmo de Christofides pode ser dividido em vários passos-chave:
 
-## Como usar
-
-_O arquivo `main.ipynb` já contém exemplos de uso._
-
-### utils/distance_matrix.py
-
-Fornece o objeto DistanceMatrix, que contém os seguintes métodos:
-- `from_text`: retorna uma matriz de distância representada como um array numpy de duas dimensões; aceita uma *string* contendo as linhas da matriz.
-- `from_text_file`: aceita o nome de um arquivo de texto, que será lido e passado para o método `from_text` para por fim retornar a matriz de distância.
-
-### utils/tsp_solver.py
-
-Fornece o objeto TSPSolver, que pode ser instanciado utilizando a matriz de distância obtida utilizando `DistanceMatrix` como parâmetro. Diversos métodos são fornecidos para encontrar o caminho mais curto:
-
-- `brute_force`: explora todas as possíveis permutações de cidades e calcula a distância total para encontrar a solução mais eficiente. Vale ressaltar que o algoritmo de força bruta é viável apenas para um número pequeno de cidades (e.g. `data/FIVE`)
+1. **Árvore Geradora Mínima (AGM)**: Construir uma árvore geradora mínima usando um algoritmo adequado como Prim ou Kruskal.
+2. **Vértices de Grau Ímpar**: Identificar os vértices na AGM com graus ímpares (ou seja, número ímpar de arestas incidentes a eles).
+3. **Emparelhamento Perfeito de Peso Mínimo**: Encontrar um emparelhamento perfeito de peso mínimo para os vértices de grau ímpar.
+4. **Multigrafo Conectado**: Combinar a árvore geradora mínima e o emparelhamento perfeito de peso mínimo para formar um multigrafo conectado.
+5. **Circuito Euleriano**: Encontrar um circuito euleriano no multigrafo conectado.
+6. **Circuito Hamiltoniano**: Converter o circuito euleriano em um circuito hamiltoniano, evitando vértices repetidos.
 
 
-## Contato:
+## Complexidade Temporal
 
-- **Arnaldo Lucas**: arnaldo.lucas@arapiraca.ufal.br
-- **Danilo**: danilo.almeida@arapiraca.ufal.br
-- **Everton Reis**: everton.reis@arapiraca.ufal.br
-- **Marcos Paulo**: marcos.silva4@arapiraca.ufal.br
+A complexidade temporal do algoritmo de Christofides pode ser analisada da seguinte forma:
+
+- Construção da árvore geradora mínima: O(n^2) ou O(n log n) dependendo do algoritmo escolhido.
+- Identificação de vértices de grau ímpar: O(n).
+- Cálculo do emparelhamento perfeito de peso mínimo: O(n^3) usando algoritmos como o algoritmo Blossom.
+- Combinação dos componentes e busca de circuitos eulerianos e hamiltonianos: O(n) ou O(n log n) dependendo da implementação.
+
+No geral, a complexidade temporal do algoritmo é O(n^3) devido ao passo que envolve o cálculo do emparelhamento perfeito de peso mínimo, que domina o custo computacional.
 
 
-## Próximos Passos:
-
-O projeto será expandido com a implementação de outros algoritmos de resolução para o PCV para lidar com conjuntos de dados maiores de forma mais eficiente.
-
-
-## Licença
-
-Este projeto é licenciado sob a Licença Pública Geral GNU v3.0. Você é livre para modificar e distribuir este software de acordo com os termos da licença. Para obter mais detalhes, consulte o [texto completo da licença](https://www.gnu.org/licenses/gpl-3.0.html). Resumo da GNU GPL v3.0
-
-- Você é livre para executar, modificar e compartilhar o software.
-- Quaisquer modificações feitas devem ser liberadas sob a mesma licença durante a distribuição.
-- Este software é distribuído sem qualquer garantia; consulte a licença para obter detalhes.
-
-<hr>
-
-**raquel linda ❤️**
