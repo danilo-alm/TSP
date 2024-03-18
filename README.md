@@ -57,4 +57,48 @@ Este projeto é licenciado sob a Licença Pública Geral GNU v3.0. Você é livr
 
 <hr>
 
-**raquel linda ❤️**
+# Algoritmo do Problema do Caixeiro Viajante (Traveling Salesman Problem - TSP)
+
+Este projeto contém a implementação em Python do algoritmo do Problema do Caixeiro Viajante utilizando o Método de Christofides. O código foi desenvolvido para resolver instâncias do TSP representadas por um conjunto de coordenadas de pontos no plano.
+
+## Funcionamento do Código
+
+O código está estruturado da seguinte forma:
+
+1. **`tsp(data)`**:
+   - Função principal que executa o algoritmo TSP.
+   - Recebe uma lista de coordenadas de pontos como entrada.
+   - Divide o processo em etapas para resolver o TSP, incluindo a construção do grafo, criação de uma Árvore de Abrangência Mínima, identificação de vértices ímpares, emparelhamento de peso mínimo, busca de um Tour Euleriano e cálculo do comprimento do tour.
+
+2. **`build_graph(data)`**:
+   - Constrói um grafo completo representando todas as distâncias entre as cidades (pontos) utilizando a distância euclidiana.
+
+3. **`UnionFind`**:
+   - Implementação da estrutura de dados Union-Find para operações eficientes de união e busca.
+
+4. **`minimum_spanning_tree(G)`**:
+   - Utiliza o algoritmo de Kruskal para encontrar uma Árvore de Abrangência Mínima no grafo G.
+
+5. **`find_odd_vertexes(MST)`**:
+   - Identifica os vértices com grau ímpar na Árvore de Abrangência Mínima.
+
+6. **`minimum_weight_matching(MST, G, odd_vert)`**:
+   - Adiciona arestas de emparelhamento de peso mínimo à Árvore de Abrangência Mínima.
+
+7. **`find_eulerian_tour(MatchedMSTree, G)`**:
+   - Encontra um tour euleriano no grafo, combinando a Árvore de Abrangência Mínima e o emparelhamento de peso mínimo.
+
+8. **`remove_edge_from_matchedMST(MatchedMST, v1, v2)`**:
+   - Remove uma aresta do grafo MatchedMST.
+
+## Utilização
+
+Para executar o algoritmo, basta chamar a função `tsp(data)` e passar como argumento uma lista de coordenadas de pontos no plano. Por exemplo:
+
+```python
+tsp([
+    [0.0, 633.0, 257.0, 91.0, 412.0, ...],
+    [633.0, 0.0, 390.0, 661.0, 227.0, ...],
+    ...
+])
+
