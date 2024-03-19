@@ -1,3 +1,20 @@
+## Comparação de Algoritmos por Base de Dados
+
+| Algoritmo/Base de dados   | ATT48 (Tempo/Peso) | DANTZIG42 (Tempo/Peso) | FRI26 (Tempo/Peso) | GR17 (Tempo/Peso) | P01 (Tempo/Peso) |
+|-----------------------    |----------------    |------------------------|--------------------|-------------------|------------------|
+| Força bruta               |    Tempo / Peso    |       Tempo / Peso     |     Tempo / Peso   |     Tempo / Peso  |  Tempo / Peso    |
+| Algoritmo de Dijkstra     |    0.0 / 37928     |      0.0 / 864         |    0.0 / 965       |    0.0 / 2178     |    0.0 / 291     |
+| Algoritmo de Kruskal      |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
+| Algoritmo de Christofides |   0.0 / 35789      |       0.0 / 559        |    0.0 / 960       |    0.0   / 2504   |   0.0   / 274    |
+
+## Contato:
+
+- **Arnaldo Lucas**: arnaldo.lucas@arapiraca.ufal.br
+- **Danilo**: danilo.almeida@arapiraca.ufal.br
+- **Everton Reis**: everton.reis@arapiraca.ufal.br
+- **Marcos Paulo**: marcos.silva4@arapiraca.ufal.br
+
+
 # Projeto: Problema do Caixeiro Viajante (PCV) 
 
 Bem-vindo ao projeto do Problema do Caixeiro Viajante (PCV)! Este é um problema clássico de otimização combinatória no qual o objetivo é encontrar o caminho mais curto que visita todas as cidades uma vez e retorna à cidade de origem.
@@ -53,12 +70,7 @@ Este método estático determina o caminho de menor distância entre todas as ci
 - `Parâmetros`: 
    - `matrizDistance`: Uma matriz de distâncias entre cidades.
 
-## Contato:
 
-- **Arnaldo Lucas**: arnaldo.lucas@arapiraca.ufal.br
-- **Danilo**: danilo.almeida@arapiraca.ufal.br
-- **Everton Reis**: everton.reis@arapiraca.ufal.br
-- **Marcos Paulo**: marcos.silva4@arapiraca.ufal.br
 
 
 ## Próximos Passos:
@@ -110,6 +122,24 @@ O código está estruturado da seguinte forma:
 8. **`remove_edge_from_matchedMST(MatchedMST, v1, v2)`**:
    - Remove uma aresta do grafo MatchedMST.
 
+
+## Etapas Básicas:
+
+1. **Encontre uma árvore geradora mínima (T):**
+   - Utilize um algoritmo como o algoritmo de Kruskal ou Prim para encontrar a árvore geradora mínima do grafo.
+
+2. **Encontre vértices em T com grau ímpar (O):**
+   - Identifique os vértices na árvore geradora mínima que possuem grau ímpar.
+
+3. **Encontre arestas de correspondência de peso mínimo (M) para T:**
+   - Para cada par de vértices ímpares, encontre a aresta de peso mínimo que os conecta.
+
+4. **Construa um circuito Euleriano usando as arestas de M e T:**
+   - Utilize um algoritmo para encontrar um circuito Euleriano no grafo formado pelas arestas de M e T.
+
+5. **Faça um circuito Hamiltoniano pulando vértices repetidos:**
+   - A partir do circuito Euleriano obtido, construa um circuito Hamiltoniano pulando vértices repetidos.
+
 ## Utilização
 
 Para executar o algoritmo, basta chamar a função `tsp(data)` e passar como argumento uma lista de coordenadas de pontos no plano. Por exemplo:
@@ -122,12 +152,4 @@ tsp([
 ])
 
 
-## Comparação de Algoritmos por Base de Dados
-
-| Algoritmo/Base de dados   | ATT48 (Tempo/Peso) | DANTZIG42 (Tempo/Peso) | FRI26 (Tempo/Peso) | GR17 (Tempo/Peso) | P01 (Tempo/Peso) |
-|-----------------------    |----------------    |------------------------|--------------------|-------------------|------------------|
-| Força bruta               |     0.0 / 37928    |        0.0 / 864       |      0.0 / 965     |      0.0 / 2178   |   0.0 / 291      |
-| Algoritmo de Dijkstra     |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
-| Algoritmo de Kruskal      |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
-| Algoritmo de Christofides |   0.0 / 35789      |       0.0 / 559        |    0.0 / 960       |    0.0   / 2504   |   0.0   / 274    |
 
