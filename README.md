@@ -129,5 +129,5 @@ tsp([
 | Força bruta               |     0.0 / 37928    |        0.0 / 864       |      0.0 / 965     |      0.0 / 2178   |   0.0 / 291      |
 | Algoritmo de Dijkstra     |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
 | Algoritmo de Kruskal      |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
-| Algoritmo de Christofides |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
+| Algoritmo de Christofides |   0.0 / 35789      |       0.0 / 559        |    0.0 / 960       |    0.0   / 2504   |   0.0   / 274    |
 
