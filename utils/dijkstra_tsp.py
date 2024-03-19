@@ -41,4 +41,6 @@ class DijsktraTSP:
                 tourFinal=tour
 
         print("Caminho aproximado do PCV:", tourFinal)
+        print("Distância do caminho:", countFinal)
+
 
