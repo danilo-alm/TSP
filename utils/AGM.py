@@ -112,6 +112,9 @@ class SolucionadorTSP:
 
         return arvore_geradora
 
+    def custo_arvore(self, arestas):
+        return sum(aresta_[2] for aresta_ in arestas)
+
     @classmethod
     def ler_coordenadas(cls, arquivo):
         coordenadas = []
@@ -137,7 +140,7 @@ class SolucionadorTSP:
                     parts = line.split()
                     for i in range(len(parts)):
                         if parts[i].isdigit():
-                            for j in range(i+1, len(parts)):
+                            for j in range(i + 1, len(parts)):
                                 if parts[j].isdigit():
                                     distance = int(parts[j])
                                     coordenadas.append(distance)
@@ -167,34 +170,48 @@ class SolucionadorTSP:
 if __name__ == "__main__":
     coordenadas_att48 = SolucionadorTSP.ler_coordenadas("../data/ATT48/att48.tsp")
     coordenadas_gr17 = SolucionadorTSP.ler_coordenadas("../data/GR17/gr17.tsp")
+    coordenadas_p01 = SolucionadorTSP.ler_coordenadas("../data/P01/p01.tsp")
 
     print(coordenadas_att48)
     print(coordenadas_gr17)
+    print(coordenadas_p01)
 
     # Criar instâncias dos Solucionadores TSP
     solucionador_att48 = SolucionadorTSP(coordenadas_att48)
     solucionador_gr17 = SolucionadorTSP(coordenadas_gr17)
+    solucionador_p01 = SolucionadorTSP(coordenadas_p01)
 
     # Imprimir as arestas da Árvore Geradora Mínima para o att48
     print("\nArestas da Árvore Geradora Mínima para att48:")
     agm_arestas_att48 = solucionador_att48.agm_kruskal()
     for aresta in agm_arestas_att48:
         print(aresta)
+    print("Custo total da AGM de Kruskal para att48:", solucionador_att48.custo_arvore(agm_arestas_att48))
 
     # Imprimir as arestas da Árvore Geradora Mínima para o gr17
     print("\nArestas da Árvore Geradora Mínima para gr17:")
     agm_arestas_gr17 = solucionador_gr17.agm_kruskal()
     for aresta in agm_arestas_gr17:
         print(aresta)
+    print("Custo total da AGM de Kruskal para gr17:", solucionador_gr17.custo_arvore(agm_arestas_gr17))
 
     # Imprimir as arestas da Árvore Geradora Mínima para o att48 usando Prim
     print("\nArestas da Árvore Geradora Mínima para att48 usando Prim:")
     agm_arestas_att48_prim = solucionador_att48.agm_prim()
     for aresta in agm_arestas_att48_prim:
         print(aresta)
+    print("Custo total da AGM de Prim para att48:", solucionador_att48.custo_arvore(agm_arestas_att48_prim))
 
     # Imprimir as arestas da Árvore Geradora Mínima para o gr17 usando Prim
     print("\nArestas da Árvore Geradora Mínima para gr17 usando Prim:")
     agm_arestas_gr17_prim = solucionador_gr17.agm_prim()
     for aresta in agm_arestas_gr17_prim:
         print(aresta)
+    print("Custo total da AGM de Prim para gr17:", solucionador_gr17.custo_arvore(agm_arestas_gr17_prim))
+
+    # Imprimir as arestas da Árvore Geradora Mínima para o p01 usando Prim
+    print("\nArestas da Árvore Geradora Mínima para p01 usando Prim:")
+    agm_arestas_p01_prim = solucionador_p01.agm_prim()
+    for aresta in agm_arestas_p01_prim:
+        print(aresta)
+    print("Custo total da AGM de Prim para p01:", solucionador_p01.custo_arvore(agm_arestas_p01_prim))
