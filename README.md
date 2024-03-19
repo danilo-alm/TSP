@@ -33,6 +33,25 @@ Fornece o objeto TSPSolver, que pode ser instanciado utilizando a matriz de dist
 
 - `brute_force`: explora todas as possíveis permutações de cidades e calcula a distância total para encontrar a solução mais eficiente. Vale ressaltar que o algoritmo de força bruta é viável apenas para um número pequeno de cidades (e.g. `data/FIVE`)
 
+### utils/dijkstra_tsp.py
+
+A classe `DijsktraTSP` implementa uma versão simplificada do algoritmo de Dijkstra para resolver o Problema do Caixeiro Viajante (PCV) de forma aproximada.
+
+- `dijkstra_tsp`: este método estático calcula um caminho aproximado para o PCV a partir de uma matriz de distâncias entre cidades e um nó de partida. Ele utiliza o algoritmo de Dijkstra para encontrar o vizinho mais próximo de cada cidade, formando assim um caminho que visita cada cidade uma vez antes de retornar ao ponto de partida.
+
+- `Parâmetros`: 
+   - `matrix`: Uma matriz de distâncias entre cidades, onde `matrix[i][j]` representa a distância entre as cidades `i` e `j`.
+   - `start`: O índice da cidade de partida.
+
+- `Retorno`
+   - Uma lista representando o caminho aproximado para o PCV, começando e terminando na cidade de partida.
+
+- `bestDistance`:
+
+Este método estático determina o caminho de menor distância entre todas as cidades, utilizando o método `dijkstra_tsp`, e imprime o caminho encontrado.
+
+- `Parâmetros`: 
+   - `matrizDistance`: Uma matriz de distâncias entre cidades.
 
 ## Contato:
 
@@ -101,4 +120,14 @@ tsp([
     [633.0, 0.0, 390.0, 661.0, 227.0, ...],
     ...
 ])
+
+
+## Comparação de Algoritmos por Base de Dados
+
+| Algoritmo/Base de dados   | ATT48 (Tempo/Peso) | DANTZIG42 (Tempo/Peso) | FRI26 (Tempo/Peso) | GR17 (Tempo/Peso) | P01 (Tempo/Peso) |
+|-----------------------    |----------------    |------------------------|--------------------|-------------------|------------------|
+| Força bruta               |     0.0 / 37928    |        0.0 / 864       |      0.0 / 965     |      0.0 / 2178   |   0.0 / 291      |
+| Algoritmo de Dijkstra     |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
+| Algoritmo de Kruskal      |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
+| Algoritmo de Christofides |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
 
