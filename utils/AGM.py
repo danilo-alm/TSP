@@ -1,3 +1,4 @@
+import datetime
 from itertools import permutations
 import math
 
@@ -177,9 +178,20 @@ if __name__ == "__main__":
     print(coordenadas_p01)
 
     # Criar instâncias dos Solucionadores TSP
+    t1 = datetime.date.today()
     solucionador_att48 = SolucionadorTSP(coordenadas_att48)
+    t2 = datetime.date.today()
+    print("Tempo: " + str(t1 - t2))
+
+    t1 = datetime.date.today()
     solucionador_gr17 = SolucionadorTSP(coordenadas_gr17)
+    t2 = datetime.date.today()
+    print("Tempo: " + str(t1 - t2))
+
+    t1 = datetime.date.today()
     solucionador_p01 = SolucionadorTSP(coordenadas_p01)
+    t2 = datetime.date.today()
+    print("Tempo: " + str(t1 - t2))
 
     # Imprimir as arestas da Árvore Geradora Mínima para o att48
     print("\nArestas da Árvore Geradora Mínima para att48:")

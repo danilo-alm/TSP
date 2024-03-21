@@ -1,11 +1,11 @@
 ## Comparação de Algoritmos por Base de Dados
 
-| Algoritmo/Base de dados   | ATT48 (Tempo/Peso) | DANTZIG42 (Tempo/Peso) | FRI26 (Tempo/Peso) | GR17 (Tempo/Peso) | P01 (Tempo/Peso) |
-|-----------------------    |----------------    |------------------------|--------------------|-------------------|------------------|
-| Força bruta               |    Tempo / Peso    |       Tempo / Peso     |     Tempo / Peso   |     Tempo / Peso  |  Tempo / Peso    |
-| Algoritmo de Dijkstra     |    0.0 / 37928     |      0.0 / 864         |    0.0 / 965       |    0.0 / 2178     |    0.0 / 291     |
-| Algoritmo de Kruskal      |   Tempo / Peso     |      Tempo / Peso      |    Tempo / Peso    |    Tempo / Peso   |   Tempo / Peso   |
-| Algoritmo de Christofides |   0.0 / 35789      |       0.0 / 559        |    0.0 / 960       |    0.0   / 2504   |   0.0   / 274    |
+| Algoritmo/Base de dados   | ATT48 (Tempo/Peso)       | DANTZIG42 (Tempo/Peso) | FRI26 (Tempo/Peso) | GR17 (Tempo/Peso) | P01 (Tempo/Peso) |
+|---------------------------|--------------------------|------------------------|--------------------|-------------------|------------------|
+| Força bruta               | Tempo / Peso             | Tempo / Peso           | Tempo / Peso       | Tempo / Peso      | Tempo / Peso     |
+| Algoritmo de Dijkstra     | 0.0 / 37928              | 0.0 / 864              | 0.0 / 965          | 0.0 / 2178        | 0.0 / 291        |
+| Algoritmo de Kruskal      | 0.0 / 27643.676498888937 | 0.0 / 559              | 0.0 / 960          | 0.0 / 2646        | 0.0 / 29         |
+| Algoritmo de Christofides | 0.0 / 35789              | 0.0 / 559              | 0.0 / 960          | 0.0   / 2504      | 0.0   / 274      |
 
 ## Contato:
 
@@ -70,8 +70,10 @@ Este método estático determina o caminho de menor distância entre todas as ci
 - `Parâmetros`: 
    - `matrizDistance`: Uma matriz de distâncias entre cidades.
 
+### [utils/AGM.py](utils/AGM.py)
 
-
+Esse programa em Python executa o algoritmo de Prim e de Kruskal para encontrar a Árvore Geradora Mínima para as bases ATT48, GR17 e P01. 
+O custo é indicado no topo e a execução é imediata. 
 
 ## Próximos Passos:
 
